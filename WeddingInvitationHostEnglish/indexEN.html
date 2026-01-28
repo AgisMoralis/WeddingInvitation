@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agis & Filio – Our Wedding</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --olive-dark: #4f5d2f;
+            --olive-mid: #7a8f55;
+            --cream: #faf8f3;
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+            margin-top: -30px;
+        }
+
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        header div {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.4rem, 7vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            opacity: 0.95;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: clamp(45px, 8vw, 70px) 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section:not(:first-of-type) {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .details {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .divider {
+            width: 140px;
+            margin: 20px auto 30px;
+            opacity: 0.8;
+            display: block;
+        }
+
+        /* ===== COUNTDOWN SECTION ===== */
+        #countdown-section {
+            margin-top: 40px;
+        }
+
+        #countdown {
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            text-align: center;
+            color: var(--olive-dark);
+            font-weight: 600;
+        }
+
+        /* ===== STORY SECTION ===== */
+        #story {
+            position: relative;
+            background-image: url('photoBackground.jpg');
+            background-size: cover;
+            background-position: left center;
+            background-repeat: no-repeat;
+            padding: clamp(80px, 12vw, 120px) 20px;
+        }
+
+        #story::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(250, 248, 243, 0.50);
+            z-index: 0;
+        }
+
+        #story .details-intro,
+        #story .details-main {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-right: auto;
+            margin-left: 0;
+            margin-top: clamp(-20px, -8vw, -100px);
+            font-weight: 500;
+            color: #2a2a2a;
+        }
+
+        #story .details-main {
+            max-width: 50%;
+        }
+
+        @media (min-width: 768px) and (orientation: landscape) {
+            #story {
+                padding: clamp(100px, 15vw, 150px) 40px;
+            }
+            
+            #story .details-intro {
+                margin-top: -100px;
+                margin-bottom: 30px;
+                max-width: 70%;
+            }
+            
+            #story .details-main {
+                margin-top: 0;
+                max-width: 45%;
+            }
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            margin-top: 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-content {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.9;
+        }
+
+        .info-content strong {
+            color: var(--olive-dark);
+            font-size: 1.1em;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .info-content strong:first-child {
+            margin-top: 0;
+        }
+
+        /* ===== RSVP SECTION ===== */
+        .rsvp-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .rsvp-box p {
+            margin-bottom: 25px;
+        }
+
+        .rsvp-box a {
+            background: var(--olive-dark);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .rsvp-box a:hover {
+            background: var(--olive-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <video autoplay muted loop playsinline>
+            <source src="oliveTreeInSunset.mp4" type="video/mp4">
+        </video>
+        <div>
+            <h1>Agis & Filio</h1>
+            <p>We warmly invite you to our wedding</p>
+        </div>
+    </header>
+
+    <!-- COUNTDOWN SECTION -->
+    <section id="countdown-section">
+        <h2>Countdown to Our Day</h2>
+        <p class="details">
+            <img src="calendar.png" alt="calendar" style="width: 20px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Sunday, 5 July 2026</strong><br>
+        </p>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story">
+        <p class="details-intro">
+            The time has come to make official what you already know.<br><br><br>
+        </p>
+        <p class="details-main">
+            Join us to celebrate!<br>
+            Without you, the day<br>
+            just wouldn't be the same!
+        </p>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section id="details">
+        <h2>The Ceremony</h2>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Makri, Greece</strong><br>
+            The ceremony begins at 18:30 and will take place at the church of Saint George of Makri.
+        </p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.97901748407!2d25.757974487790534!3d40.85038447407498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b203d5bbea4d13%3A0x29456d53dbee0631!2zzpnOtc-Bz4zPgiDOnc6xz4zPgiDOkc6zzq_Ov8-FIM6TzrXPic-BzrPOr86_z4U!5e0!3m2!1sel!2sbe!4v1769455054520!5m2!1sel!2sbe"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>The Reception</h3>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Alexandroupolis, Greece</strong><br>
+            The wedding reception will take place after the ceremony.
+        </p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.2425291056584!2d25.899657377180898!3d40.88849452679035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b21be8942bde19%3A0x4c518f82b085b5bb!2sKtima%20Ateria!5e0!3m2!1sen!2sbe!4v1769019910018!5m2!1sen!2sbe"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Useful Information</h3>
+        <div class="info-content">
+            <strong>Distances:</strong>
+            From Dimokritos Airport to City Center
+            <span style="padding-left: 20px; display: block;">• 6.7 km (11 min drive)</span>
+            From City Center to Church
+            <span style="padding-left: 20px; display: block;">• 12 km (17 min drive)</span>
+            From Church to Venue
+            <span style="padding-left: 20px; display: block;">• 16 km (17 min drive)</span>
+            
+            <strong>Transportation:</strong>
+            • Parking available at the Church and the Venue<br>
+            • Shuttle bus service will be available: More details soon
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section id="rsvp">
+        <h2>RSVP</h2>
+        <div class="rsvp-box">
+            <p>
+                Please let us know by <strong>15 May 2026</strong> if you will be joining us.
+                We can't wait to celebrate together.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSciK1upJXT9yoIyQXRHJglAbDf2Q6iiB8vC-ZWlNzEufB6RWQ/viewform?usp=pp_url" target="_blank">
+                Respond to Invitation
+            </a>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+        const weddingDate = new Date("2026-07-05T18:30:00+03:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    </script>
+</body>
+</html>
