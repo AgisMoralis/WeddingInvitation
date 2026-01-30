@@ -77,12 +77,23 @@
             overflow: hidden;
         }
 
+        /* Make the video full-bleed and centered across all viewports */
+        .hero-clip {
+            position: absolute;
+            inset: 0; /* full-bleed container */
+            width: 100vw;
+            max-width: none;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* behind overlay */
+        }
+
         header video {
             position: absolute;
             top: 50%;
             left: 50%;
-            min-width: 100%;
-            min-height: 100%;
+            min-width: 100vw;   /* always at least viewport width */
+            min-height: 100vh;  /* ensure cover vertically */
             transform: translate(-50%, -50%);
             object-fit: cover;
             filter: brightness(60%);
@@ -93,6 +104,7 @@
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.35);
+            z-index: 1; /* dim overlay above video */
         }
 
         header div {
@@ -147,125 +159,32 @@
             font-weight: 600;
         }
 
-        /* ===== IMAGE HERO ===== */
-        .image-hero {
-            /* tweak these variables to control appearance */
-            --hero-height: 420px;   /* container height (in pixels) */
-            --hero-pos-x: 30%;      /* horizontal focal point (percentage) */
-            --hero-pos-y: 0px;      /* vertical offset (use negative to crop top) (e.g. -50px will shift image up) */
-
-            position: relative;
-            width: 100%;
-            max-width: 900px;        /* optional container width */
-            margin: auto;
-            height: var(--hero-height);
-            overflow: hidden;        /* crop overflowing background */
-        }
-
-        .image-hero-bg {
-            position: absolute;
-            inset: 0;                           /* fill the container */
-            background-image: url("bgr.png");
-            background-repeat: no-repeat;
-            background-position: var(--hero-pos-x) var(--hero-pos-y);
-            background-size: cover;             /* ensure it fills the container */
-            z-index: 0;
-            filter: opacity(0.9);              /* use filter so text isn't affected */
-            transform-origin: top left;
-        }
-
-        /* top-left overlay text */
-        .image-hero-content {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            z-index: 2;
-            color: #2a2a2a;
-            font-weight: 700;
-            max-width: 70%;
-        }
-
-        /* bottom-left overlay text */
-        .image-hero-bottom {
-            position: absolute;
-            left: 16px;
-            bottom: 16px;
-            z-index: 2;
-            color: #2a2a2a;
-            font-weight: 700;
-            max-width: 70%;
-            line-height: 1.35;
-        }
-
-        /* responsive tweaks */
-        @media (max-width: 600px) {
-            .image-hero { height: calc(var(--hero-height) - 40px); }
-            .image-hero-bg { background-position: 40% var(--hero-pos-y); filter: opacity(0.9); }
-            .image-hero-content, .image-hero-bottom { left: 12px; right: 12px; max-width: 92%; }
-            .image-hero-content { top: 12px; }
-            .image-hero-bottom { bottom: 12px; }
-        }
-
-        /* ===== STORY SECTION ===== */
+        /* ===== STORY SECTION (simplified) ===== */
         #story {
-            position: relative;
+            padding: clamp(20px, 4vw, 40px) 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
+
+        #story .story-image {
             background-image: url('bgr.png');
             background-size: cover;
             background-position: 35% center;
             background-repeat: no-repeat;
-            padding: clamp(80px, 12vw, 120px) 20px;
+            height: 420px;
+            opacity: 0.9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
         }
 
-        #story::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(250, 248, 243, 0.40);
-            z-index: 0;
-        }
-
-        #story .details-intro {
-            position: relative;
-            z-index: 1;
-            text-align: left;
-            margin-right: auto;
-            margin-left: 0;
-            margin-top: clamp(0px, -8vw, -100px);
-            font-weight: 700;
-            font-size: clamp(1.1rem, 5vw, 1.15rem);
-            color: #2a2a2a;
-        }
-
-        #story .details-main {
-            position: relative;
-            z-index: 1;
-            text-align: left;
-            margin-right: auto;
-            margin-left: 0;
-            margin-top: clamp(0px, -8vw, -100px);
-            font-weight: 700;
-            font-size: clamp(1.05rem, 4.5vw, 1.15rem);
-            color: #2a2a2a;
-        }
-
-        #story .details-main {
-            max-width: 70%;
-        }
-
-        @media (min-width: 768px) and (orientation: landscape) {
-            #story {
-                padding: clamp(100px, 15vw, 150px) 40px;
-            }
-            
-            #story .details-intro {
-                margin-top: -100px;
-                margin-bottom: 30px;
-                max-width: 70%;
-            }
-            
-            #story .details-main {
-                margin-bottom: -100px;
-                max-width: 45%;
+        /* Make image full-width on screens smaller than section max-width */
+        @media (max-width: 940px) {
+            #story .story-image {
+                width: 100vw;
+                margin-left: calc(50% - 50vw);
+                border-radius: 0;
             }
         }
 
@@ -347,9 +266,11 @@
 <body>
     <!-- HEADER -->
     <header>
-        <video autoplay muted loop playsinline>
-            <source src="oliveTreeInSunset.mp4" type="video/mp4">
-        </video>
+        <div class="hero-clip">
+            <video autoplay muted loop playsinline>
+                <source src="oliveTreeInSunset.mp4" type="video/mp4">
+            </video>
+        </div>
         <div>
             <h1>Άγης & Φιλιώ</h1>
             <p>Με μεγάλη μας χαρά σας προσκαλούμε στον γάμο μας!</p>
@@ -367,15 +288,12 @@
     </section>
 
     <!-- STORY SECTION -->
-    <section >
+    <section id="story" aria-label="Story">
         <p class="details">
             <strong>Ελάτε να γιορτάσουμε μαζί!<br>
-                Γιατί χωρίς εσάς, η μέρα δεν θα είναι η ίδια!</strong><br>
+                Γιατί χωρίς εσάς, η μέρα δεν θα είναι η ίδια!</strong>
         </p>
-    </section>
-    <section class="image-hero" aria-label="Story">
-      <div class="image-hero-bg" aria-hidden="true"></div>
-      <div class="image-hero-content"></div>
+        <div class="story-image" aria-hidden="true"></div>
     </section>
 
     <!-- DETAILS SECTION -->
