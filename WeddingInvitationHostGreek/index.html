@@ -162,7 +162,18 @@
             z-index: 0;
         }
 
-        #story .details-intro,
+        #story .details-intro {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-right: auto;
+            margin-left: 0;
+            margin-top: clamp(0px, -8vw, -100px);
+            font-weight: 700;
+            font-size: clamp(1.1rem, 5vw, 1.15rem);
+            color: #2a2a2a;
+        }
+
         #story .details-main {
             position: relative;
             z-index: 1;
@@ -170,12 +181,13 @@
             margin-right: auto;
             margin-left: 0;
             margin-top: clamp(0px, -8vw, -100px);
-            font-weight: 500;
+            font-weight: 700;
+            font-size: clamp(1.05rem, 4.5vw, 1.15rem);
             color: #2a2a2a;
         }
 
         #story .details-main {
-            max-width: 60%;
+            max-width: 70%;
         }
 
         @media (min-width: 768px) and (orientation: landscape) {
@@ -310,7 +322,8 @@
         <p class="details">
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Μάκρη, Ελλάδα</strong><br>
-            Η τέλεση του μυστηρίου θα ξεκινήσει στις 18:30 και θα πραγματοποιηθεί στην εκκλησία του Αγίου Γεωργίου Μάκρης.
+            Η τέλεση του μυστηρίου θα ξεκινήσει στις 18:30 και θα πραγματοποιηθεί στην εκκλησία του Αγίου Γεωργίου Μάκρης,
+            με την συνοδεία και την στήριξη των κουμπάρων μας Νικολάου Μπαϊμπάκη & Έλενας Ευσταθίου.
         </p>
 
         <div class="map-container">
