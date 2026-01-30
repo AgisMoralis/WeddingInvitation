@@ -18,20 +18,27 @@
 
         /* ===== BASE STYLES ===== */
         html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 150%;
             scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
             background: var(--cream);
             color: #4a4a4a;
             line-height: 1.7;
         }
 
         /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3 {    
-            font-family: 'Playfair Display', serif;
+        h1 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2, h3 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
         }
 
         h2 {
@@ -45,10 +52,15 @@
             font-size: clamp(1.8rem, 5vw, 2.4rem);
             text-align: center;
             color: var(--olive-dark);
-            margin-bottom: 0.5rem;
+        }
+        
+        h4 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
         }
 
         p {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
             font-size: clamp(1rem, 4vw, 1.15rem);
         }
 
@@ -128,10 +140,70 @@
         }
 
         #countdown {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
             font-size: clamp(1.3rem, 5vw, 1.8rem);
             text-align: center;
             color: var(--olive-dark);
             font-weight: 600;
+        }
+
+        /* ===== IMAGE HERO ===== */
+        .image-hero {
+            /* tweak these variables to control appearance */
+            --hero-height: 420px;   /* container height (in pixels) */
+            --hero-pos-x: 30%;      /* horizontal focal point (percentage) */
+            --hero-pos-y: 0px;      /* vertical offset (use negative to crop top) (e.g. -50px will shift image up) */
+
+            position: relative;
+            width: 100%;
+            max-width: 900px;        /* optional container width */
+            margin: auto;
+            height: var(--hero-height);
+            overflow: hidden;        /* crop overflowing background */
+        }
+
+        .image-hero-bg {
+            position: absolute;
+            inset: 0;                           /* fill the container */
+            background-image: url("bgr.png");
+            background-repeat: no-repeat;
+            background-position: var(--hero-pos-x) var(--hero-pos-y);
+            background-size: cover;             /* ensure it fills the container */
+            z-index: 0;
+            filter: opacity(0.9);              /* use filter so text isn't affected */
+            transform-origin: top left;
+        }
+
+        /* top-left overlay text */
+        .image-hero-content {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            color: #2a2a2a;
+            font-weight: 700;
+            max-width: 70%;
+        }
+
+        /* bottom-left overlay text */
+        .image-hero-bottom {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            z-index: 2;
+            color: #2a2a2a;
+            font-weight: 700;
+            max-width: 70%;
+            line-height: 1.35;
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 600px) {
+            .image-hero { height: calc(var(--hero-height) - 40px); }
+            .image-hero-bg { background-position: 40% var(--hero-pos-y); filter: opacity(0.9); }
+            .image-hero-content, .image-hero-bottom { left: 12px; right: 12px; max-width: 92%; }
+            .image-hero-content { top: 12px; }
+            .image-hero-bottom { bottom: 12px; }
         }
 
         /* ===== STORY SECTION ===== */
@@ -152,7 +224,18 @@
             z-index: 0;
         }
 
-        #story .details-intro,
+        #story .details-intro {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-right: auto;
+            margin-left: 0;
+            margin-top: clamp(0px, -8vw, -100px);
+            font-weight: 700;
+            font-size: clamp(1.1rem, 5vw, 1.15rem);
+            color: #2a2a2a;
+        }
+
         #story .details-main {
             position: relative;
             z-index: 1;
@@ -160,8 +243,8 @@
             margin-right: auto;
             margin-left: 0;
             margin-top: clamp(0px, -8vw, -100px);
-            font-weight: 500;
-            font-size: clamp(1.1rem, 5vw, 1rem);
+            font-weight: 700;
+            font-size: clamp(1.05rem, 4.5vw, 1.15rem);
             color: #2a2a2a;
         }
 
@@ -284,15 +367,15 @@
     </section>
 
     <!-- STORY SECTION -->
-    <section id="story">
-        <p class="details-intro">
-            The time has come to make official what you already know.<br><br><br>
+    <section >
+        <p class="details">
+            <strong>Join us to celebrate!<br>
+            Without you, the day just wouldn't be the same!</strong><br>
         </p>
-        <p class="details-main">
-            <br><br><br>Join us to celebrate!<br>
-            Without you, the day<br>
-            just wouldn't be the same!
-        </p>
+    </section>
+    <section class="image-hero" aria-label="Story">
+      <div class="image-hero-bg" aria-hidden="true"></div>
+      <div class="image-hero-content"></div>
     </section>
 
     <!-- DETAILS SECTION -->
@@ -302,7 +385,7 @@
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Makri, Greece</strong><br>
             The ceremony begins at 18:30 and will take place at the church of Saint George of Makri,
-            with the support and presence of our Best Man Nikolaos Baibakis and our Maid of Honour Elena Eustathiou.
+            with the support and presence of our Best Man Nikolaos Baibakis and our Maid of Honour Elena Efstathiou.
         </p>
 
         <div class="map-container">
@@ -318,7 +401,7 @@
         <p class="details">
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Alexandroupolis, Greece</strong><br>
-            The wedding reception will take place at "Ktima Ateria" right after the ceremony.
+            The wedding reception will follow at "Ktima Ateria".
         </p>
 
         <div class="map-container">
@@ -332,6 +415,7 @@
 
         <h3>Useful Information</h3>
         <div class="info-content">
+        <p>
             <strong>Distances:</strong>
             From Dimokritos Airport to City Center
             <span style="padding-left: 20px; display: block;">• 6.7 km (11 min drive)</span>
@@ -339,10 +423,10 @@
             <span style="padding-left: 20px; display: block;">• 12 km (17 min drive)</span>
             From Church to Venue
             <span style="padding-left: 20px; display: block;">• 16 km (17 min drive)</span>
-            
             <strong>Transportation:</strong>
             • Parking available at the Church and the Venue<br>
-            • Shuttle bus service will be available: More details soon
+            • Shuttle bus service will be available (more details soon)
+        </p>
         </div>
     </section>
 

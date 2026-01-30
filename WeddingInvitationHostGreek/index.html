@@ -18,12 +18,15 @@
 
         /* ===== BASE STYLES ===== */
         html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 150%;
             scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
-            font-family: 'Montserrat';
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
             background: var(--cream);
             color: #4a4a4a;
             line-height: 1.7;
@@ -31,11 +34,11 @@
 
         /* ===== TYPOGRAPHY ===== */
         h1 {
-            font-family: 'Palatino Linotype';
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
         }
 
         h2, h3 {
-            font-family: 'Palatino Linotype';
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
         }
 
         h2 {
@@ -52,12 +55,12 @@
         }
         
         h4 {
-            font-family: 'Palatino Linotype';  
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
             font-size: clamp(1rem, 4vw, 1.15rem);
         }
 
         p {
-            font-family: 'Palatino Linotype';  
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
             font-size: clamp(1rem, 4vw, 1.15rem);
         }
 
@@ -137,11 +140,70 @@
         }
 
         #countdown {
-            font-family: 'Palatino Linotype';
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
             font-size: clamp(1.3rem, 5vw, 1.8rem);
             text-align: center;
             color: var(--olive-dark);
             font-weight: 600;
+        }
+
+        /* ===== IMAGE HERO ===== */
+        .image-hero {
+            /* tweak these variables to control appearance */
+            --hero-height: 420px;   /* container height (in pixels) */
+            --hero-pos-x: 30%;      /* horizontal focal point (percentage) */
+            --hero-pos-y: 0px;      /* vertical offset (use negative to crop top) (e.g. -50px will shift image up) */
+
+            position: relative;
+            width: 100%;
+            max-width: 900px;        /* optional container width */
+            margin: auto;
+            height: var(--hero-height);
+            overflow: hidden;        /* crop overflowing background */
+        }
+
+        .image-hero-bg {
+            position: absolute;
+            inset: 0;                           /* fill the container */
+            background-image: url("bgr.png");
+            background-repeat: no-repeat;
+            background-position: var(--hero-pos-x) var(--hero-pos-y);
+            background-size: cover;             /* ensure it fills the container */
+            z-index: 0;
+            filter: opacity(0.9);              /* use filter so text isn't affected */
+            transform-origin: top left;
+        }
+
+        /* top-left overlay text */
+        .image-hero-content {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            color: #2a2a2a;
+            font-weight: 700;
+            max-width: 70%;
+        }
+
+        /* bottom-left overlay text */
+        .image-hero-bottom {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            z-index: 2;
+            color: #2a2a2a;
+            font-weight: 700;
+            max-width: 70%;
+            line-height: 1.35;
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 600px) {
+            .image-hero { height: calc(var(--hero-height) - 40px); }
+            .image-hero-bg { background-position: 40% var(--hero-pos-y); filter: opacity(0.9); }
+            .image-hero-content, .image-hero-bottom { left: 12px; right: 12px; max-width: 92%; }
+            .image-hero-content { top: 12px; }
+            .image-hero-bottom { bottom: 12px; }
         }
 
         /* ===== STORY SECTION ===== */
@@ -305,15 +367,15 @@
     </section>
 
     <!-- STORY SECTION -->
-    <section id="story">
-        <h4 class="details-intro">
-            Ήρθε η ώρα να επισημοποιήσουμε ό,τι ήδη ξέρετε.<br><br><br>
-        </h4>
-        <p class="details-main">
-            <br><br><br>Ελάτε να γιορτάσουμε μαζί!<br>
-            Γιατί χωρίς εσάς, η μέρα<br>
-            δεν θα είναι η ίδια!
+    <section >
+        <p class="details">
+            <strong>Ελάτε να γιορτάσουμε μαζί!<br>
+                Γιατί χωρίς εσάς, η μέρα δεν θα είναι η ίδια!</strong><br>
         </p>
+    </section>
+    <section class="image-hero" aria-label="Story">
+      <div class="image-hero-bg" aria-hidden="true"></div>
+      <div class="image-hero-content"></div>
     </section>
 
     <!-- DETAILS SECTION -->
@@ -323,7 +385,7 @@
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Μάκρη, Ελλάδα</strong><br>
             Η τέλεση του μυστηρίου θα ξεκινήσει στις 18:30 και θα πραγματοποιηθεί στην εκκλησία του Αγίου Γεωργίου Μάκρης,
-            με την συνοδεία και την στήριξη των κουμπάρων μας Νικολάου Μπαϊμπάκη & Έλενας Ευσταθίου.
+            με τους κουμπάρους μας Νικολάο Μπαϊμπάκη & Έλενα Ευσταθίου.
         </p>
 
         <div class="map-container">
@@ -339,7 +401,7 @@
         <p class="details">
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Αλεξανδρούπολη, Ελλάδα</strong><br>
-            Η γαμήλια δεξίωση θα πραγματοποιηθεί στο "Κτήμα Ατέρια" αμέσως μετά την τέλεση του μυστηρίου.
+            Θα ακολουθήσει γαμήλια δεξίωση στο "Κτήμα Ατέρια".
         </p>
 
         <div class="map-container">
@@ -356,15 +418,14 @@
         <p>
             <strong>Αποστάσεις:</strong>
             Από το Αεροδρόμιο Δημόκριτος στο Κέντρο της Πόλης
-            <span style="padding-left: 20px; display: block;">• 6.7 km (11 min drive)</span>
+            <span style="padding-left: 20px; display: block;">• 6.7 χλμ (11 λεπτά οδήγηση)</span>
             Από το Κέντρο της Πόλης στην Εκκλησία
-            <span style="padding-left: 20px; display: block;">• 12 km (17 min drive)</span>
+            <span style="padding-left: 20px; display: block;">• 12 χλμ (17 λεπτά οδήγηση)</span>
             Από την Εκκλησία στον Χώρο της Δεξίωσης
-            <span style="padding-left: 20px; display: block;">• 16 km (17 min drive)</span>
-            
+            <span style="padding-left: 20px; display: block;">• 16 χλμ (17 λεπτά οδήγηση)</span>
             <strong>Μεταφορές:</strong>
             • Διαθέσιμο πάρκινγκ στην Εκκλησία και στον Χώρο της Δεξίωσης<br>
-            • Θα υπάρχει υπηρεσία λεωφορείου: Περισσότερες λεπτομέρειες σύντομα
+            • Θα υπάρχει υπηρεσία λεωφορείου την ημέρα του γάμου (περισσότερες λεπτομέρειες σύντομα)
         </p>
         </div>
     </section>
