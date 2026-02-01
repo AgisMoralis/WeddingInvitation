@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agis & Filio – Dasma jonë</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --olive-dark: #4f5d2f;
+            --olive-mid: #7a8f55;
+            --cream: #faf8f3;
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 110%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            background: var(--cream);
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2, h3 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+            margin-top: -30px;
+        }
+
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+        }
+        
+        h4 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        p {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        /* Make the video full-bleed and centered across all viewports */
+        .hero-clip {
+            position: absolute;
+            inset: 0; /* full-bleed container */
+            width: 100vw;
+            max-width: none;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* behind overlay */
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100vw;   /* always at least viewport width */
+            min-height: 100vh;  /* ensure cover vertically */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1; /* dim overlay above video */
+        }
+
+        header div {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.4rem, 7vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            opacity: 0.95;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: clamp(45px, 8vw, 70px) 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section:not(:first-of-type) {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .details {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .divider {
+            width: 140px;
+            margin: 20px auto 30px;
+            opacity: 0.8;
+            display: block;
+        }
+
+        /* ===== COUNTDOWN SECTION ===== */
+        #countdown-section {
+            margin-top: 40px;
+        }
+
+        #countdown {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            text-align: center;
+            color: var(--olive-dark);
+            font-weight: 600;
+        }
+
+        /* ===== STORY SECTION (simplified) ===== */
+        #story {
+            padding: clamp(20px, 4vw, 40px) 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
+
+        #story .story-image {
+            background-image: url('bgr.png');
+            background-size: cover;
+            background-position: 35% center;
+            background-repeat: no-repeat;
+            height: 420px;
+            opacity: 0.9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* Make image full-width on screens smaller than section max-width */
+        @media (max-width: 940px) {
+            #story .story-image {
+                width: 100vw;
+                margin-left: calc(50% - 50vw);
+                border-radius: 0;
+            }
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            margin-top: 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-content {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.9;
+        }
+
+        .info-content strong {
+            color: var(--olive-dark);
+            font-size: 1.1em;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .info-content strong:first-child {
+            margin-top: 0;
+        }
+
+        /* ===== RSVP SECTION ===== */
+        .rsvp-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .rsvp-box p {
+            margin-bottom: 25px;
+        }
+
+        .rsvp-box a {
+            background: var(--olive-dark);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .rsvp-box a:hover {
+            background: var(--olive-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="hero-clip">
+            <video autoplay muted loop playsinline>
+                <source src="oliveTreeInSunset.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <h1>Agis & Filio</h1>
+            <p>Me gëzim të madh ju presim në ditën e dasmës sonë!</p>
+        </div>
+    </header>
+
+    <!-- COUNTDOWN SECTION -->
+    <section id="countdown-section">
+        <h2>Numërimi mbrapsht drejt ditës sonë</h2>
+        <p class="details">
+            <img src="calendar.png" alt="calendar" style="width: 20px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>E Diel, 5 Korrik 2026</strong><br>
+        </p>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" aria-label="Story">
+        <p class="details">
+            <strong>Hajdeni të festojmë së bashku!<br>
+                Është e rëndësishme për ne që të jeni pranë nesh!</strong>
+        </p>
+        <div class="story-image" aria-hidden="true"></div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section id="details">
+        <h2>Ceremonia e Dasmës</h2>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Makri, Greqi</strong><br>
+            Ceremonia e martesës do të zhvillohet në orën 18:30, në kishën e Shën Gjergjit në Makri,
+            me kumbarë Nikolaos Baibakis dhe Elena Efstathiou.
+        </p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.97901748407!2d25.757974487790534!3d40.85038447407498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b203d5bbea4d13%3A0x29456d53dbee0631!2zzpnOtc-Bz4zPgiDOnc6xz4zPgiDOkc6zzq_Ov8-FIM6TzrXPic-BzrPOr86_z4U!5e0!3m2!1sel!2sbe!4v1769455054520!5m2!1sel!2sbe"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Dasma</h3>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Alexandroupoli, Greqi</strong><br>
+            Do të pasojë një pritje dasme në "Ktima Ateria".
+        </p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.2425291056584!2d25.899657377180898!3d40.88849452679035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b21be8942bde19%3A0x4c518f82b085b5bb!2sKtima%20Ateria!5e0!3m2!1sen!2sbe!4v1769019910018!5m2!1sen!2sbe"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Informacione të Dobishme</h3>
+        <div class="info-content">
+        <p>
+            <strong>Distancat:</strong>
+            Nga aeroporti "Demokritos" në qendër të qytetit
+            <span style="padding-left: 20px; display: block;">• 6.7 km (11 minuta me makinë)</span>
+            Nga qendra e qytetit në kishë
+            <span style="padding-left: 20px; display: block;">• 12 km (17 minuta me makinë)</span>
+            Nga kisha në vendin e pritjes
+            <span style="padding-left: 20px; display: block;">• 16 km (17 minuta me makinë)</span>
+            <strong>Transporti:</strong>
+            • Do të ketë shërbim autobusi në ditën e dasmës për kishën dhe vendin e pritjes<br>
+            • Parkim i disponueshëm në kishë dhe në vendin e pritjes
+        </p>
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section id="rsvp">
+        <h2>Konfirmimi i Pranishmërisë</h2>
+        <div class="rsvp-box">
+            <p>
+                Ju lutemi na njoftoni deri më <strong>15 Maj 2026</strong> nëse do të merrni pjesë.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSciK1upJXT9yoIyQXRHJglAbDf2Q6iiB8vC-ZWlNzEufB6RWQ/viewform?usp=pp_url" target="_blank">
+                Përgjigjuni Ftesës
+            </a>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+        const weddingDate = new Date("2026-07-05T18:30:00+03:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    </script>
+</body>
+</html>
