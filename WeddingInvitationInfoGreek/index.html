@@ -6,13 +6,12 @@
     <title>Άγης & Φιλιώ – Ο γάμος μας - Πληροφορίες</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         /* ===== VARIABLES ===== */
         :root {
             --olive-dark: #4f5d2f;
-            --olive-mid: #7a8f55;
             --cream: #faf8f3;
         }
 
@@ -20,7 +19,6 @@
         html {
             /* increase base font-size to scale typography proportionally */
             font-size: 110%;
-            scroll-behavior: smooth;
         }
 
         body {
@@ -37,26 +35,12 @@
             font-family: 'Gabriola', 'Palatino Linotype', serif;
         }
 
-        h2, h3 {
-            font-family: 'Gabriola', 'Palatino Linotype', serif;
-        }
-
         h2 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
             font-size: clamp(1.8rem, 5vw, 2.4rem);
             text-align: center;
             color: var(--olive-dark);
             margin-top: -30px;
-        }
-
-        h3 {
-            font-size: clamp(1.8rem, 5vw, 2.4rem);
-            text-align: center;
-            color: var(--olive-dark);
-        }
-        
-        h4 {
-            font-family: 'Gabriola', 'Palatino Linotype', serif;  
-            font-size: clamp(1rem, 4vw, 1.15rem);
         }
 
         p {
@@ -138,128 +122,6 @@
             max-width: 700px;
             margin: auto;
         }
-
-        .divider {
-            width: 140px;
-            margin: 20px auto 30px;
-            opacity: 0.8;
-            display: block;
-        }
-
-        /* ===== COUNTDOWN SECTION ===== */
-        #countdown-section {
-            margin-top: 40px;
-        }
-
-        #countdown {
-            font-family: 'Gabriola', 'Palatino Linotype', serif;
-            font-size: clamp(1.3rem, 5vw, 1.8rem);
-            text-align: center;
-            color: var(--olive-dark);
-            font-weight: 600;
-        }
-
-        /* ===== STORY SECTION (simplified) ===== */
-        #story {
-            padding: clamp(20px, 4vw, 40px) 20px;
-            max-width: 900px;
-            margin: auto;
-            text-align: left;
-        }
-
-        #story .story-image {
-            background-image: url('bgr.png');
-            background-size: cover;
-            background-position: 35% center;
-            background-repeat: no-repeat;
-            height: 420px;
-            opacity: 0.9;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-top: 20px;
-        }
-
-        /* Make image full-width on screens smaller than section max-width */
-        @media (max-width: 940px) {
-            #story .story-image {
-                width: 100vw;
-                margin-left: calc(50% - 50vw);
-                border-radius: 0;
-            }
-        }
-
-        /* ===== MAP ===== */
-        .map-container {
-            margin-top: 35px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 320px;
-            border: 0;
-        }
-
-        /* ===== INFO SECTION ===== */
-        .info-content {
-            text-align: left;
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.9;
-        }
-
-        .info-content strong {
-            color: var(--olive-dark);
-            font-size: 1.1em;
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-
-        .info-content strong:first-child {
-            margin-top: 0;
-        }
-
-        /* ===== RSVP SECTION ===== */
-        .rsvp-box {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 14px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-            text-align: center;
-            max-width: 500px;
-            margin: auto;
-        }
-
-        .rsvp-box p {
-            margin-bottom: 25px;
-        }
-
-        .rsvp-box a {
-            background: var(--olive-dark);
-            color: white;
-            padding: 14px 28px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .rsvp-box a:hover {
-            background: var(--olive-mid);
-            transform: translateY(-2px);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 25px 15px;
-            font-size: 0.9rem;
-            color: #777;
-        }
     </style>
 </head>
 
@@ -279,7 +141,7 @@
     </header>
 
     <!-- PREPARATION SECTION -->
-    <section id="details">
+    <section id="preparation">
         <h2>Προετοιμασία:</h2>
         <p class="details">
             <img src="groom.png" alt="location" style="width: 40px; height: 40px; vertical-align: middle; margin-bottom: 5px;">
@@ -292,13 +154,24 @@
     </section>
 
     <!-- CHURCH SECTION -->
-    <section id="details">
+    <section id="church">
         <h2>Η Γαμήλια Τελετή</h2>
         <p class="details">
             <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
             <strong>Μάκρη, Ελλάδα</strong><br>
             Η τέλεση του μυστηρίου θα γίνει στις <strong>18:30</strong> στην εκκλησία του Αγίου Γεωργίου Μάκρης.<br>
             (<a href="https://maps.app.goo.gl/2BrAaAd9pvSstjgP9" target="_blank">δείτε τοποθεσία</a>)
+        </p>
+    </section>
+
+    <!-- VENUE SECTION -->
+    <section id="church">
+        <h2>Η Δεξίωση</h2>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Αλεξανδρούπολη, Ελλάδα</strong><br>
+            Θα ακολουθήσει μετά το πέρας του μυστηρίου στο "Κτήμα Ατέρια".<br>
+            (<a href="https://maps.app.goo.gl/mpagJfonJ2x8vfpn6" target="_blank">δείτε τοποθεσία</a>)
         </p>
     </section>
 
