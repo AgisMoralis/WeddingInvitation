@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agis & Filio – Our wedding - Buses</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --olive-dark: #4f5d2f;
+            --cream: #faf8f3;
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 110%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            background: var(--cream);
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+            margin-top: -30px;
+        }
+
+        p {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        /* Make the video full-bleed and centered across all viewports */
+        .hero-clip {
+            position: absolute;
+            inset: 0; /* full-bleed container */
+            width: 100vw;
+            max-width: none;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* behind overlay */
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100vw;   /* always at least viewport width */
+            min-height: 100vh;  /* ensure cover vertically */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1; /* dim overlay above video */
+        }
+
+        header div {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.4rem, 7vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            opacity: 0.95;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: clamp(45px, 8vw, 70px) 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section:not(:first-of-type) {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .details {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="hero-clip">
+            <video autoplay muted loop playsinline>
+                <source src="oliveTreeInSunset.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <h1>Agis & Filio</h1>
+            <p>05 July 2026</p>
+            <p>Buses</p>
+        </div>
+    </header>
+
+    <!-- SCHEDULE SECTION -->
+    <section id="details">
+        <h2>Bus schedules</h2>
+        <p class="details">
+            <img src="clockTime.png" alt="location" style="width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; margin-bottom: 5px;">
+            <strong>They will depart for the church:</strong><br>
+            From the groom's house:
+            <span style="padding-left: 20px; display: block;">• at <strong>17:05</strong> (<a href="https://maps.app.goo.gl/xnEZuy6bYAcb81Eq5" target="_blank">see location</a>)</span>
+            From the bride's house:
+            <span style="padding-left: 20px; display: block;">• at <strong>17:15</strong> (<a href="https://maps.app.goo.gl/fbbzMBDLVU5zKdsZ8" target="_blank">see location</a>)</span>
+            From the city hall of the city center:
+            <span style="padding-left: 20px; display: block;">• at <strong>17:30</strong> (<a href="https://maps.app.goo.gl/ByroZxkYt7VZcYov8" target="_blank">see location</a>)</span>
+        </p>
+        <br>
+        <p class="details">
+            <img src="clockTime.png" alt="location" style="width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; margin-bottom: 5px;">
+            <strong>They will depart for "Ktima Ateria":</strong><br>
+            From the church after the ceremony completion.
+        </p>
+    </section>
+
+    <!-- BUSES SECTION -->
+    <section id="buses">
+        <h2>Buses</h2>
+        <p class="details">
+            <img src="Bus1.png" alt="location" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; margin-bottom: 5px;">
+            <strong>Bus 1:</strong>
+            <span style="padding-left: 20px; display: block;">Μπράχο Αλέκο (x2)</span>
+            <span style="padding-left: 20px; display: block;">Μιχαλάρη Στεφανία (x2)</span>
+            <span style="padding-left: 20px; display: block;">Μιχαλάρης Χρήστος (x2)</span>
+            <span style="padding-left: 20px; display: block;">Μετσόλλη Φιλομένα (x2)</span>
+            <br>
+            <img src="Bus2.png" alt="location" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; margin-bottom: 5px;">
+            <strong>Bus 2:</strong>
+            <span style="padding-left: 20px; display: block;">Μπασνά Κατερίνα (x2)</span>
+            <span style="padding-left: 20px; display: block;">Μπασνάς Χρήστος (x2)</span>
+            <span style="padding-left: 20px; display: block;">Κολοβός Σταμάτης (x1)</span>
+            <span style="padding-left: 20px; display: block;">Tomek Jagodzinski (x2)</span>
+            <span style="padding-left: 20px; display: block;">Veljacic Lucija (x1)</span>
+            <br>
+            <img src="Bus3.png" alt="location" style="width: 25px; height: 25px; vertical-align: middle; margin-right: 5px; margin-bottom: 5px;">
+            <strong>Bus 3:</strong>
+            <span style="padding-left: 20px; display: block;">Μπαλαμάτσια Ελευθερία (x2)</span>
+            <span style="padding-left: 20px; display: block;">Κατηφόρης Βασίλης (x2)</span>
+            <span style="padding-left: 20px; display: block;">Μαυρογένης Βασίλης (x1)</span>
+            <span style="padding-left: 20px; display: block;">Πάντος Ηλίας (x2)</span>
+            <span style="padding-left: 20px; display: block;">Ήλκου Ελένη (x1)</span>
+            <br>
+            <strong>Regarding your departure from the venue:</strong>
+            <span style="padding-left: 20px; display: block;">
+                We will provide you with a contact number
+                <br>to arrange your departure by taxi.</span>
+            <span style="padding-left: 20px; display: block;">
+                Your departure costs will be covered by us.</span>
+            <span style="padding-left: 20px; display: block;">
+                We would kindly ask you to inform us
+                <br>with a personal message per vehicle,
+                <br>mentioning the names of the passengers
+                <br>on each route.</span>
+            <br>
+            <span style="padding-left: 20px; display: block;">(this page will be updated soon)</span>
+            <br>
+            <strong>Thank you !</strong>
+        </p>
+    </section>
+    
+</body>
+</html>
