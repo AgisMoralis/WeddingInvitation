@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Άγης & Φιλιώ – Ο γάμος μας - Πληροφορίες</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --olive-dark: #4f5d2f;
+            --olive-mid: #7a8f55;
+            --cream: #faf8f3;
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 110%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            background: var(--cream);
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2, h3 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+            margin-top: -30px;
+        }
+
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--olive-dark);
+        }
+        
+        h4 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        p {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        /* Make the video full-bleed and centered across all viewports */
+        .hero-clip {
+            position: absolute;
+            inset: 0; /* full-bleed container */
+            width: 100vw;
+            max-width: none;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* behind overlay */
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100vw;   /* always at least viewport width */
+            min-height: 100vh;  /* ensure cover vertically */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1; /* dim overlay above video */
+        }
+
+        header div {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.4rem, 7vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            opacity: 0.95;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: clamp(45px, 8vw, 70px) 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section:not(:first-of-type) {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .details {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .divider {
+            width: 140px;
+            margin: 20px auto 30px;
+            opacity: 0.8;
+            display: block;
+        }
+
+        /* ===== COUNTDOWN SECTION ===== */
+        #countdown-section {
+            margin-top: 40px;
+        }
+
+        #countdown {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            text-align: center;
+            color: var(--olive-dark);
+            font-weight: 600;
+        }
+
+        /* ===== STORY SECTION (simplified) ===== */
+        #story {
+            padding: clamp(20px, 4vw, 40px) 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
+
+        #story .story-image {
+            background-image: url('bgr.png');
+            background-size: cover;
+            background-position: 35% center;
+            background-repeat: no-repeat;
+            height: 420px;
+            opacity: 0.9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* Make image full-width on screens smaller than section max-width */
+        @media (max-width: 940px) {
+            #story .story-image {
+                width: 100vw;
+                margin-left: calc(50% - 50vw);
+                border-radius: 0;
+            }
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            margin-top: 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-content {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.9;
+        }
+
+        .info-content strong {
+            color: var(--olive-dark);
+            font-size: 1.1em;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .info-content strong:first-child {
+            margin-top: 0;
+        }
+
+        /* ===== RSVP SECTION ===== */
+        .rsvp-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .rsvp-box p {
+            margin-bottom: 25px;
+        }
+
+        .rsvp-box a {
+            background: var(--olive-dark);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .rsvp-box a:hover {
+            background: var(--olive-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="hero-clip">
+            <video autoplay muted loop playsinline>
+                <source src="oliveTreeInSunset.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <h1>Άγης & Φιλιώ</h1>
+            <p>05 Ιουλίου 2026</p>
+            <p>Γενικές Πληροφορίες</p>
+        </div>
+    </header>
+
+    <!-- PREPARATION SECTION -->
+    <section id="details">
+        <h2>Προετοιμασία:</h2>
+        <p class="details">
+            <img src="groom.png" alt="location" style="width: 40px; height: 40px; vertical-align: middle; margin-bottom: 5px;">
+            Η προετοιμασία του γάμπρου θα ξεκινήσει (<a href="https://maps.app.goo.gl/xnEZuy6bYAcb81Eq5" target="_blank">δείτε τοποθεσία</a>):
+            <span style="padding-left: 20px; display: block;">• στις <strong>14:30</strong></span>
+            <img src="bride.png" alt="location" style="width: 40px; height: 40px; vertical-align: middle; margin-bottom: 5px;">
+            Η προετοιμασία της νύφης θα ξεκινήσει (<a href="https://maps.app.goo.gl/fbbzMBDLVU5zKdsZ8" target="_blank">δείτε τοποθεσία</a>):
+            <span style="padding-left: 20px; display: block;">• στις <strong>16:00</strong></span>
+        </p>
+    </section>
+
+    <!-- CHURCH SECTION -->
+    <section id="details">
+        <h2>Η Γαμήλια Τελετή</h2>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Μάκρη, Ελλάδα</strong><br>
+            Η τέλεση του μυστηρίου θα γίνει στις <strong>18:30</strong> στην εκκλησία του Αγίου Γεωργίου Μάκρης (<a href="https://maps.app.goo.gl/2BrAaAd9pvSstjgP9" target="_blank">δείτε τοποθεσία</a>).
+        </p>
+    </section>
+
+</body>
+</html>
