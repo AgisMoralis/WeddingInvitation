@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Αντώνης & Ανθή – Ο γάμος μας</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES ===== */
+        :root {
+            --dark: #b08d57;
+            --mid: #e3cba4;
+            --cream: #fbf6ee;
+        }
+
+        /* ===== BASE STYLES ===== */
+        html {
+            /* increase base font-size to scale typography proportionally */
+            font-size: 110%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Gabriola', 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            background: var(--cream);
+            color: #4a4a4a;
+            line-height: 1.7;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2, h3 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--dark);
+            margin-top: -30px;
+        }
+
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            text-align: center;
+            color: var(--dark);
+        }
+        
+        h4 {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        p {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;  
+            font-size: clamp(1rem, 4vw, 1.15rem);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        /* Make the video full-bleed and centered across all viewports */
+        .hero-clip {
+            position: absolute;
+            inset: 0; /* full-bleed container */
+            width: 100vw;
+            max-width: none;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* behind overlay */
+        }
+
+        header video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100vw;   /* always at least viewport width */
+            min-height: 100vh;  /* ensure cover vertically */
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(60%);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1; /* dim overlay above video */
+        }
+
+        header div {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: clamp(2.4rem, 7vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            opacity: 0.95;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            padding: clamp(45px, 8vw, 70px) 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section:not(:first-of-type) {
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .details {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .divider {
+            width: 140px;
+            margin: 20px auto 30px;
+            opacity: 0.8;
+            display: block;
+        }
+
+        /* ===== COUNTDOWN SECTION ===== */
+        #countdown-section {
+            margin-top: 40px;
+        }
+
+        #countdown {
+            font-family: 'Gabriola', 'Palatino Linotype', serif;
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            text-align: center;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* ===== STORY SECTION (simplified) ===== */
+        #story {
+            padding: clamp(20px, 4vw, 40px) 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: left;
+        }
+
+        #story .story-image {
+            background-image: url('anthi-adonis-photo.png');
+            background-size: cover;
+            background-position: 35% center;
+            background-repeat: no-repeat;
+            height: 420px;
+            opacity: 0.9;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* Make image full-width on screens smaller than section max-width */
+        @media (max-width: 940px) {
+            #story .story-image {
+                width: 100vw;
+                margin-left: calc(50% - 50vw);
+                border-radius: 0;
+            }
+        }
+
+        /* ===== MAP ===== */
+        .map-container {
+            margin-top: 35px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 320px;
+            border: 0;
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-content {
+            text-align: left;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.9;
+        }
+
+        .info-content strong {
+            color: var(--dark);
+            font-size: 1.1em;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+
+        .info-content strong:first-child {
+            margin-top: 0;
+        }
+
+        /* ===== RSVP SECTION ===== */
+        .rsvp-box {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .rsvp-box p {
+            margin-bottom: 25px;
+        }
+
+        .rsvp-box a {
+            background: var(--dark);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .rsvp-box a:hover {
+            background: var(--mid);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="hero-clip">
+            <video autoplay muted loop playsinline>
+                <source src="oliveTreeInSunset.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <h1>Αντώνης & Ανθή</h1>
+            <p>Με μεγάλη μας χαρά σας προσκαλούμε στον γάμο μας!</p>
+        </div>
+    </header>
+
+    <!-- COUNTDOWN SECTION -->
+    <section id="countdown-section">
+        <h2>Αντίστροφη Μέτρηση</h2>
+        <p class="details">
+            <img src="calendar.png" alt="calendar" style="width: 20px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Σάββατο, 3 Οκτωβρίου 2026</strong><br>
+        </p>
+        <div id="countdown"></div>
+    </section>
+
+    <!-- STORY SECTION -->
+    <section id="story" aria-label="Story">
+        <p class="details">
+            <strong>Κάποιες στιγμές αξίζει να τις μοιράζεσαι με τους ανθρώπους που αγαπάς.<br>
+                Γι'αυτό, θα χαρούμε πολύ να είστε κοντά μας σε αυτή τη ξεχωριστή μέρα!</strong>
+        </p>
+        <div class="story-image" aria-hidden="true"></div>
+    </section>
+
+    <!-- DETAILS SECTION -->
+    <section id="details">
+        <h2>Η Γαμήλια Τελετή</h2>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Αλεξανδρούπολη, Ελλάδα</strong><br>
+            Η τέλεση του μυστηρίου θα γίνει στις 18:00 στον Ιερό Ναό Μεταμορφώσεως του Σωτήρος,
+            με κουμπάρους τον Τέλη Τσιακίρη & την Νίνα Σφακιανού.
+        </p>
+
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3017.767295324231!2d25.87294767622887!3d40.8550326288467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b21b5fffb0e67b%3A0xbe359b8034137971!2zzpnOtc-Bz4zPgiDOnc6xz4zPgiDOnM61z4TOsc68zr_Pgc-Gz47Pg861z4nPgiDOo8-Jz4TOrs-Bzr_Pgg!5e0!3m2!1sel!2sgr!4v1786699270307!5m2!1sel!2sgr"
+                allowfullscreen
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <h3>Η Δεξίωση</h3>
+        <p class="details">
+            <img src="location.png" alt="location" style="width: 22px; height: 24px; vertical-align: middle; margin-right: 5px;">
+            <strong>Αλεξανδρούπολη, Ελλάδα</strong><br>
+            Θα ακολουθήσει γαμήλια δεξίωση στο "Arion Banquet Hall".
+        </p>
+
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.8361190709975!2d25.890598276419837!3d40.875470527591396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b21b10e72a1e41%3A0xbae0fc2f46ecef27!2sArion%20Banquet%20Hall!5e0!3m2!1sel!2sgr!4v1786699542702!5m2!1sel!2sgr"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <!-- PREPARATION SECTION -->
+        <section id="preparation">
+            <h2>Προετοιμασία:</h2>
+            <p class="details">
+                <img src="groom.png" alt="location" style="width: 40px; height: 40px; vertical-align: middle; margin-bottom: 5px;">
+                Προετοιμασία γαμπρού: Ξενοπούλου 39 <br>
+                (<a href="https://maps.app.goo.gl/v8Syp24QLzUx1Q9cA" target="_blank">δείτε τοποθεσία</a>)
+                <br>
+                <img src="bride.png" alt="location" style="width: 40px; height: 40px; vertical-align: middle; margin-bottom: 5px;">
+                Προετοιμασία νύφης: Διάκου 5 - Seagreen Luxury Apartment.<br>
+                (<a href="https://maps.app.goo.gl/qJ1a1gVjYdRQNbq76" target="_blank">δείτε τοποθεσία</a>)
+            </p>
+        </section>
+
+        <h3>Χρήσιμες Πληροφορίες</h3>
+        <div class="info-content">
+        <p>
+            • Αποστάση από την εκκλησία στον χώρο της δεξίωσης: 3.7χλμ (7 λεπτά οδήγηση)<br>
+            • Διαθέσιμο πάρκινγκ στον χώρο της δεξίωσης
+        </p>
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section id="rsvp">
+        <h2>Επιβεβαίωση Παρουσίας</h2>
+        <div class="rsvp-box">
+            <p>
+                Παρακαλούμε ενημερώστε μας μέχρι τις <strong>19 Σεπτεμβρίου 2026</strong> αν θα παρευρεθείτε.
+            </p>
+            <a href="TODO" target="_blank">
+                Απαντήστε στην Πρόσκληση
+            </a>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN SCRIPT -->
+    <script>
+        const weddingDate = new Date("2026-10-03T18:00:00+03:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    </script>
+</body>
+</html>
